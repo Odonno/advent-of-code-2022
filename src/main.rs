@@ -1,3 +1,7 @@
+mod import;
+
 fn main() {
-    println!("Hello, world!");
+    import::run(1, 1);
 }
+
+mod day01;
