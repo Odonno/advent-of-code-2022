@@ -1,7 +1,7 @@
 mod import;
 
 fn main() {
-    import::run(1, 1);
+    import::run(1, 2);
 }
 
 mod day01;
