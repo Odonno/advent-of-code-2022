@@ -1,7 +1,7 @@
 mod import;
 
 fn main() {
-    const DAY: u8 = 3;
+    const DAY: u8 = 4;
     const PART: u8 = 2;
 
     import::run(DAY, PART);
@@ -10,3 +10,4 @@ fn main() {
 mod day01;
 mod day02;
 mod day03;
+mod day04;
