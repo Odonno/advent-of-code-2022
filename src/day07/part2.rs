@@ -2,7 +2,6 @@ use std::collections::BTreeMap;
 
 #[derive(Debug)]
 struct File {
-    name: String,
     size: u32,
 }
 
@@ -62,12 +61,11 @@ pub fn run() {
                     directories.insert(dir_name, vec![]);
                 } else {
                     let size = args[0].parse::<u32>().unwrap();
-                    let name = args[1].to_string();
 
                     directories
                         .entry(current_dir_name.clone())
                         .or_default()
-                        .push(File { name, size });
+                        .push(File { size });
                 }
             }
         }
