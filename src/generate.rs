@@ -71,7 +71,7 @@ fn add_arm_on_match_puzzle(day: u8) {
 
     let original_text = r#"_ => panic!("Invalid day number. Did you forget to generate this day using the script?"),"#;
     let replaced_text = format!(
-        "{} => day{:02}(part),\n\t\t_ => panic!(\"Invalid day number. Did you forget to generate this day using the script?\"),", 
+        "{} => day{:02}(),\n\t\t_ => panic!(\"Invalid day number. Did you forget to generate this day using the script?\"),", 
         day, 
         day
     );

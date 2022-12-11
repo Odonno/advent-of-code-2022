@@ -13,8 +13,7 @@ struct Move {
     to: u8,
 }
 
-pub fn run() {
-    let input = include_str!("part2.txt");
+pub fn run(input: &str) {
     let lines = input.lines();
 
     let lines_array = lines.collect::<Vec<&str>>();

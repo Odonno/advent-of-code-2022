@@ -20,8 +20,7 @@ struct CrtRow {
 const CRT_WIDTH: u8 = 40;
 const CRT_HEIGHT: u8 = 6;
 
-pub fn run() {
-    let input = include_str!("part2.txt");
+pub fn run(input: &str) {
     let lines = input.lines();
 
     const INITIAL_X: i32 = 1;

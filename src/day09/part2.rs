@@ -22,8 +22,7 @@ struct Position {
     y: i32,
 }
 
-pub fn run() {
-    let input = include_str!("part2.txt");
+pub fn run(input: &str) {
     let lines = input.lines();
 
     let mut moves = Vec::new();

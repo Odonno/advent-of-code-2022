@@ -10,8 +10,7 @@ struct SignalStrength {
     x: i32,
 }
 
-pub fn run() {
-    let input = include_str!("part1.txt");
+pub fn run(input: &str) {
     let lines = input.lines();
 
     const INITIAL_X: i32 = 1;

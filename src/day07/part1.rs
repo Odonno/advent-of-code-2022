@@ -5,8 +5,7 @@ struct File {
     size: u32,
 }
 
-pub fn run() {
-    let input = include_str!("part1.txt");
+pub fn run(input: &str) {
     let lines = input.lines();
 
     let mut directories: BTreeMap<String, Vec<File>> = BTreeMap::new();

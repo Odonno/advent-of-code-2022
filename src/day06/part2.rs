@@ -1,8 +1,6 @@
 use itertools::Itertools;
 
-pub fn run() {
-    let input = include_str!("part2.txt");
-
+pub fn run(input: &str) {
     let mut index = 0;
 
     const CHARS_PER_PACKET: u8 = 14;
