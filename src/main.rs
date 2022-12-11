@@ -1,10 +1,10 @@
 mod import;
 
 fn main() {
-    const DAY: u8 = 11;
-    const PART: u8 = 2;
+    let day = env!("DAY").parse().unwrap();
+    let part = env!("PART").parse().unwrap();
 
-    import::run(DAY, PART);
+    import::run(day, part);
 }
 
 mod day01;
