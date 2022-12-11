@@ -1,10 +1,17 @@
-mod import;
+mod cli;
+mod generate;
+mod puzzle;
+
+use clap::Parser;
+use cli::{Args, Commands};
 
 fn main() {
-    let day = env!("DAY").parse().unwrap();
-    let part = env!("PART").parse().unwrap();
+    let args = Args::parse();
 
-    import::run(day, part);
+    match args.command {
+        Some(Commands::Generate { day }) => generate::run(day),
+        None => puzzle::run(),
+    }
 }
 
 mod day01;

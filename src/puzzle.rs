@@ -1,4 +1,7 @@
-pub fn run(day: u8, part: u8) {
+pub fn run() {
+    let day = env!("DAY").parse().unwrap();
+    let part = env!("PART").parse().unwrap();
+
     match day {
         1 => day01(part),
         2 => day02(part),
@@ -6,12 +9,12 @@ pub fn run(day: u8, part: u8) {
         4 => day04(part),
         5 => day05(part),
         6 => day06(part),
-		7 => day07(part),
-		8 => day08(part),
-		9 => day09(part),
-		10 => day10(part),
-		11 => day11(part),
-		_ => panic!("Invalid day number. Did you forget to generate this day using the script?"),
+        7 => day07(part),
+        8 => day08(part),
+        9 => day09(part),
+        10 => day10(part),
+        11 => day11(part),
+        _ => panic!("Invalid day number. Did you forget to generate this day using the script?"),
     }
 }
 
