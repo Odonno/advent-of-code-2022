@@ -18,6 +18,7 @@ pub fn run() {
         14 => day14(),
         15 => day15(),
         16 => day16(),
+        17 => day17(),
         _ => panic!("Invalid day number. Did you forget to generate this day using the script?"),
     }
 }
@@ -38,3 +39,4 @@ use crate::day13::run as day13;
 use crate::day14::run as day14;
 use crate::day15::run as day15;
 use crate::day16::run as day16;
+use crate::day17::run as day17;
