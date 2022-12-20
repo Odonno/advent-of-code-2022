@@ -10,4 +10,5 @@ chrono = "0.4.19"
 clap = { version = "4.0.29", features = ["derive"] }
 dialoguer = "0.10.2"
 itertools = "0.10.5"
+rayon = "1.5.1"
 regex = "1.5.4"
