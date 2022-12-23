@@ -1,4 +1,9 @@
+use chrono::Utc;
+use colored::Colorize;
+
 pub fn run() {
+    let before = Utc::now();
+
     let day = env!("DAY").parse::<u8>().unwrap();
 
     match day {
@@ -27,6 +32,17 @@ pub fn run() {
         23 => day23(),
         _ => panic!("Invalid day number. Did you forget to generate this day using the script?"),
     }
+
+    let after = Utc::now();
+
+    let duration = after - before;
+    let duration_text = match duration.num_seconds() {
+        seconds if seconds > 3 => format!("Took {} seconds. Really slow...", seconds).italic(),
+        seconds if seconds > 0 => format!("Took {}s. A bit slow, right?", seconds).italic(),
+        _ => format!("Took {}ms", duration.num_milliseconds()).italic(),
+    };
+
+    println!("{}", duration_text);
 }
 
 use crate::day01::run as day01;
