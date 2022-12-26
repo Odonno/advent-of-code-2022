@@ -42,6 +42,7 @@ The template you can find in the `template/` folder consists of multiple files:
 - sample.txt - the sample text provided by Advent of Code website
 - input.txt - the input text provided by Advent of Code website
 - mod.rs - a dummy module used to redirect to the part1 or part2 `run` function
+- input.rs - a module used exclusively to parse input, exporting a `parse_input` function
 - part1.rs - the basic template which contains the part 1 `run` function
 - part2.rs - the basic template which contains the part 2 `run` function
 
