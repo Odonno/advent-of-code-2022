@@ -1,6 +1,7 @@
 use chrono::{Datelike, Utc};
 use dialoguer::theme::ColorfulTheme;
 use dialoguer::Input;
+use regex::Regex;
 use std::{
     fs::{self, File},
     io::{self, Write},
@@ -21,6 +22,7 @@ pub fn run(day: Option<u8>) {
     import_module_on_main(day);
     use_crate_on_puzzle(day);
     add_arm_on_match_puzzle(day);
+    update_config_file(day);
 
     println!("Folder src/day{:02} successfully generated!", day);
 }
@@ -87,24 +89,49 @@ fn add_arm_on_match_puzzle(day: u8) {
 
     let original_text = r#"_ => panic!("Invalid day number. Did you forget to generate this day using the script?"),"#;
     let replaced_text = format!("{} => day{:02}(),\n\t\t{}", day, day, original_text);
-
     let puzzle_content = str::replace(&puzzle_content, original_text, &replaced_text);
-    let mut puzzle_file = File::create(puzzle_path).unwrap();
 
+    let mut puzzle_file = File::create(puzzle_path).unwrap();
     puzzle_file.write_all(puzzle_content.as_bytes()).unwrap();
 }
 
-fn copy_dir_all(src: impl AsRef<Path>, dst: impl AsRef<Path>) -> io::Result<()> {
-    fs::create_dir_all(&dst)?;
+fn update_config_file(day: u8) {
+    let config_path = Path::new(".cargo/config.toml");
+    let config_content = fs::read_to_string(config_path).unwrap();
+
+    // update day number
+    let regex = Regex::new(r#"DAY = "\d+""#).unwrap();
+    let original_text = regex.find(&config_content).unwrap().as_str();
+    let replaced_text = format!("DAY = \"{}\"", day);
+    let config_content = str::replace(&config_content, original_text, &replaced_text);
+
+    // update part number
+    let regex = Regex::new(r#"PART = "\d+""#).unwrap();
+    let original_text = regex.find(&config_content).unwrap().as_str();
+    let replaced_text = "PART = \"1\"";
+    let config_content = str::replace(&config_content, original_text, &replaced_text);
+
+    // update use sample
+    let regex = Regex::new(r#"USE_SAMPLE = "(?:true|false)""#).unwrap();
+    let original_text = regex.find(&config_content).unwrap().as_str();
+    let replaced_text = "USE_SAMPLE = \"true\"";
+    let config_content = str::replace(&config_content, original_text, &replaced_text);
+
+    let mut config_file = File::create(config_path).unwrap();
+    config_file.write_all(config_content.as_bytes()).unwrap();
+}
+
+fn copy_dir_all(src: impl AsRef<Path>, dist: impl AsRef<Path>) -> io::Result<()> {
+    fs::create_dir_all(&dist)?;
 
     for entry in fs::read_dir(src)? {
         let entry = entry?;
         let ty = entry.file_type()?;
 
         if ty.is_dir() {
-            copy_dir_all(entry.path(), dst.as_ref().join(entry.file_name()))?;
+            copy_dir_all(entry.path(), dist.as_ref().join(entry.file_name()))?;
         } else {
-            fs::copy(entry.path(), dst.as_ref().join(entry.file_name()))?;
+            fs::copy(entry.path(), dist.as_ref().join(entry.file_name()))?;
         }
     }
 

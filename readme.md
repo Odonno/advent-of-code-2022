@@ -55,7 +55,7 @@ The template you can find in the `template/` folder consists of multiple files:
   - [x] Ask the day to create, using the current day of the month as default value
   - [ ] Prevent empty line at the end of file
   - [x] Check if day folder already exist
-  - [ ] Update config.toml after generation
+  - [x] Update config.toml after generation
 - Template
   - [x] Use a single `input.txt` file (alongside a `sample.txt` file)
   - [x] Use a global configuration file/env variables to run puzzle (`config.toml`)
