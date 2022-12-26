@@ -54,7 +54,7 @@ The template you can find in the `template/` folder consists of multiple files:
   - [x] Generate files (modules, input) from a template for each day
   - [x] Ask the day to create, using the current day of the month as default value
   - [ ] Prevent empty line at the end of file
-  - [ ] Check if day folder already exist
+  - [x] Check if day folder already exist
   - [ ] Update config.toml after generation
 - Template
   - [x] Use a single `input.txt` file (alongside a `sample.txt` file)
