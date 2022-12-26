@@ -1,3 +1,4 @@
+pub mod input;
 pub mod part1;
 
 pub fn run() {

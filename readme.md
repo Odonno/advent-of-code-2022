@@ -59,7 +59,7 @@ The template you can find in the `template/` folder consists of multiple files:
 - Template
   - [x] Use a single `input.txt` file (alongside a `sample.txt` file)
   - [x] Use a global configuration file/env variables to run puzzle (`config.toml`)
-  - [ ] Create a file `input.rs` in the template with a function called `parse_input(input: &str)`
+  - [x] Create a file `input.rs` in the template with a function called `parse_input(input: &str)`
   - [x] Add an `assert_eq!` line at the end of each part template, only to test the sample result
 - Be TDD-oriented (for next year)
 

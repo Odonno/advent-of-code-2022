@@ -1,18 +1,5 @@
+use super::input::{SnafuIndex, SnafuNumber, SnafuUnit};
 use itertools::Itertools;
-use std::{collections::HashMap, str::Lines};
-
-#[derive(Debug, Clone, Copy)]
-enum SnafuUnit {
-    Two,
-    One,
-    Zero,
-    Minus,
-    DoubleMinus,
-}
-
-type SnafuIndex = u8;
-type SnafuNumber = HashMap<SnafuIndex, SnafuUnit>;
-type SnafuNumberList = Vec<SnafuNumber>;
 
 type DecimalNumber = i64;
 
@@ -31,9 +18,7 @@ pub fn run(input: &str, use_sample: bool) {
 }
 
 fn get_result(input: &str) -> String {
-    let lines = input.lines();
-
-    let snafu_numbers = parse_input(lines);
+    let snafu_numbers = super::input::parse_input(input);
 
     let numbers = snafu_numbers
         .iter()
@@ -156,29 +141,4 @@ fn get_snafu_number_display(snafu_result: &SnafuNumber) -> String {
     }
 
     str
-}
-
-fn parse_input(lines: Lines) -> SnafuNumberList {
-    let mut numbers = SnafuNumberList::new();
-
-    for line in lines {
-        let mut number = SnafuNumber::new();
-
-        for (index, char) in line.chars().rev().enumerate() {
-            let unit = match char {
-                '2' => SnafuUnit::Two,
-                '1' => SnafuUnit::One,
-                '0' => SnafuUnit::Zero,
-                '-' => SnafuUnit::Minus,
-                '=' => SnafuUnit::DoubleMinus,
-                _ => panic!("Invalid character: {}", char),
-            };
-
-            number.insert(index as SnafuIndex, unit);
-        }
-
-        numbers.push(number);
-    }
-
-    numbers
 }

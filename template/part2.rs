@@ -13,14 +13,7 @@ pub fn run(input: &str, use_sample: bool) {
 }
 
 fn get_result(input: &str) -> PuzzleResult {
-    let lines = input.lines();
-
-    let mut numbers = Vec::new();
-
-    for line in lines {
-        let number = line.parse::<u8>().unwrap();
-        numbers.push(number);
-    }
+    let numbers = super::input::parse_input(input);
 
     numbers.into_iter().sum::<PuzzleResult>()
 }
