@@ -66,3 +66,15 @@ The template you can find in the `template/` folder consists of multiple files:
 ## Language
 
 Rust 1.64.0
+
+## Dependencies
+
+| Name      | Version | Usage                                                                                                                                                      |
+| --------- | ------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| chrono    | 0.4.19  | Performance benchmark (time performance of the algorithm)                                                                                                  |
+| clap      | 4.0.29  | Simplify creation of CLI (run algorithm, script generation, etc...)                                                                                        |
+| colored   | 2.0.0   | Apply colors and style on the CLI output                                                                                                                   |
+| dialoguer | 0.10.2  | Simplify CLI prompt (asking for the day puzzle to generate)                                                                                                |
+| itertools | 0.10.5  | Used to get access to specific iterator methods. <br />Like the immutable `sorted_by` function instead of the mutable `sort` function...                   |
+| rayon     | 1.5.1   | Used to execute code in parallel. <br />Useful only for the day 19 part 2 to get the response faster due to a suboptimal algorithm. If you know, you know. |
+| regex     | 1.5.4   | Used to parse complex input. <br />Extremely useful in order to extract numbers, strings, etc...                                                           |
