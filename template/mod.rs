@@ -15,11 +15,11 @@ pub fn run() {
     match part {
         1 => {
             display_info(day, part, use_sample);
-            part1::run(input);
+            part1::run(input, use_sample);
         }
         2 => {
             display_info(day, part, use_sample);
-            part2::run(input);
+            part2::run(input, use_sample);
         }
         _ => panic!("Invalid part number"),
     }

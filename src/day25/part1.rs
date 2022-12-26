@@ -18,7 +18,19 @@ type DecimalNumber = i64;
 
 const SNAFU_BASE: DecimalNumber = 5;
 
-pub fn run(input: &str) {
+type PuzzleResult = &'static str;
+const EXPECTED_SAMPLE_RESULT: PuzzleResult = "2=-1=0";
+
+pub fn run(input: &str, use_sample: bool) {
+    let result = get_result(input);
+
+    println!("Result: {}", result);
+    if use_sample {
+        assert_eq!(result, EXPECTED_SAMPLE_RESULT);
+    }
+}
+
+fn get_result(input: &str) -> String {
     let lines = input.lines();
 
     let snafu_numbers = parse_input(lines);
@@ -31,8 +43,9 @@ pub fn run(input: &str) {
     let total = numbers.iter().sum::<DecimalNumber>();
 
     let snafu_result = convert_to_snafu(total);
+    let snafu_result = get_snafu_number_display(&snafu_result);
 
-    display_snafu_number(&snafu_result);
+    snafu_result
 }
 
 fn convert_to_decimal(snafu_number: &SnafuNumber) -> DecimalNumber {
@@ -124,7 +137,9 @@ fn convert_to_snafu(number: DecimalNumber) -> SnafuNumber {
     snafu_number
 }
 
-fn display_snafu_number(snafu_result: &SnafuNumber) {
+fn get_snafu_number_display(snafu_result: &SnafuNumber) -> String {
+    let mut str = String::new();
+
     for (_, unit) in snafu_result
         .iter()
         .sorted_by(|(index_a, _), (index_b, _)| index_a.cmp(index_b).reverse())
@@ -137,10 +152,10 @@ fn display_snafu_number(snafu_result: &SnafuNumber) {
             SnafuUnit::DoubleMinus => '=',
         };
 
-        print!("{}", char);
+        str += &char.to_string();
     }
 
-    println!();
+    str
 }
 
 fn parse_input(lines: Lines) -> SnafuNumberList {

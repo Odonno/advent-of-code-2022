@@ -19,7 +19,7 @@ PART = "1"
 USE_SAMPLE = "false"
 ```
 
-`DAY` and `PART` are the day/part you want to run and `USE_SAMPLE` detect whether to run the `input.txt` or the `sample.txt` file inside the `src/day23` folder.
+`DAY` and `PART` are the day/part you want to run and `USE_SAMPLE` detect whether to run the `input.txt` or the `sample.txt` file inside the `src/day7` folder.
 
 When done, you can run the CLI using the following command:
 
@@ -60,7 +60,7 @@ The template you can find in the `template/` folder consists of multiple files:
   - [x] Use a single `input.txt` file (alongside a `sample.txt` file)
   - [x] Use a global configuration file/env variables to run puzzle (`config.toml`)
   - [ ] Create a file `input.rs` in the template with a function called `parse_input(input: &str)`
-  - [ ] Add an `assert_eq!` line at the end of each part template, only to test the sample result
+  - [x] Add an `assert_eq!` line at the end of each part template, only to test the sample result
 - Be TDD-oriented (for next year)
 
 ## Language
