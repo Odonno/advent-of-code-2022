@@ -53,7 +53,6 @@ The template you can find in the `template/` folder consists of multiple files:
 - Script generation
   - [x] Generate files (modules, input) from a template for each day
   - [x] Ask the day to create, using the current day of the month as default value
-  - [ ] Prevent empty line at the end of file
   - [x] Check if day folder already exist
   - [x] Update config.toml after generation
 - Template

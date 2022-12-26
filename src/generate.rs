@@ -66,7 +66,11 @@ fn import_module_on_main(day: u8) {
         .open(main_path)
         .unwrap();
 
-    let main_content = format!("\nmod day{:02};", day);
+    let main_content = fs::read_to_string(main_path).unwrap();
+    let has_eol = main_content.ends_with("\n");
+    let line_start = if has_eol { "" } else { "\n" };
+
+    let main_content = format!("{}mod day{:02};", line_start, day);
     main_file.write_all(main_content.as_bytes()).unwrap();
 }
 
@@ -79,7 +83,14 @@ fn use_crate_on_puzzle(day: u8) {
         .open(puzzle_path)
         .unwrap();
 
-    let puzzle_content = format!("\nuse crate::day{:02}::run as day{:02};", day, day);
+    let puzzle_content = fs::read_to_string(puzzle_path).unwrap();
+    let has_eol = puzzle_content.ends_with("\n");
+    let line_start = if has_eol { "" } else { "\n" };
+
+    let puzzle_content = format!(
+        "{}use crate::day{:02}::run as day{:02};",
+        line_start, day, day
+    );
     puzzle_file.write_all(puzzle_content.as_bytes()).unwrap();
 }
 
@@ -121,6 +132,8 @@ fn update_config_file(day: u8) {
     config_file.write_all(config_content.as_bytes()).unwrap();
 }
 
+/// Copy an entire directory recursively.
+/// Inspired by Simon Buchan https://stackoverflow.com/a/65192210
 fn copy_dir_all(src: impl AsRef<Path>, dist: impl AsRef<Path>) -> io::Result<()> {
     fs::create_dir_all(&dist)?;
 
